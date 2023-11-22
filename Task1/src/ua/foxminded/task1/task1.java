@@ -1,5 +1,5 @@
 package ua.foxminded.task1;
-
+import java.util.Stack;
 import java.util.Scanner;
 
 public class task1 {
@@ -25,14 +25,24 @@ public class task1 {
 
 	}
 
-	public static String reverse(String oneword) {
+	public static String reverse(String word) {
 
-		StringBuilder stringBuildervar = new StringBuilder();
-		
-		stringBuildervar.append(oneword);
-		stringBuildervar.reverse();
+		char[] revers = new char[word.length()];
+		word.getChars(0, word.length(), revers, 0);
 
-		return stringBuildervar.toString();
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < revers.length; i++) {
+			if (Character.isDigit(revers[i]))
+				continue;
+			stack.push(revers[i]);
+			revers[i] = '$';
+		}
+		for (int i = 0; i < revers.length; i++) {
+			if (revers[i] == '$')
+				revers[i] = stack.pop();
+		}
+
+		return new String(revers);
 
 	}
 
