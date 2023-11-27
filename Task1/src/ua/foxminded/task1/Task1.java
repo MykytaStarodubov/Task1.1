@@ -9,23 +9,31 @@ public class Task1 {
 
 		Scanner scanner = new Scanner(System.in);
 		String scannerForInput = scanner.nextLine();
-		System.out.println("Original string :" + (scannerForInput));
+		System.out.println("Original string:" + (scannerForInput));
 		System.out.println("Reverse string:" + (splittedWords((scannerForInput))));
 	}
 
-	private static final String SPACESEPARATOR = " ";
+	private static final String SPACE_SEPARATOR = " ";
 	private static final char DOLLAR = '$';
 
-	private static String splittedWords(String input) {
+	public static String splittedWords(String input) {
 
-		String split1[] = input.split(SPACESEPARATOR);
+		if (input == null) {
+			throw new IllegalArgumentException("Input cannot be null");
+		}
+		
+		if (input.trim().isEmpty()) {
+			return input;
+		}
+		
+		String split[] = input.split(SPACE_SEPARATOR);
 
-		for (int i = 0; i < split1.length; i++) {
+		for (int i = 0; i < split.length; i++) {
 
-			split1[i] = enteredWord(split1[i]);
+			split[i] = enteredWord(split[i]);
 		}
 
-		return String.join(SPACESEPARATOR, split1);
+		return String.join(" ", split);
 
 	}
 
