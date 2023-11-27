@@ -43,9 +43,11 @@ public class Task1 {
 		word.getChars(0, word.length(), revers, 0);
 
 		Stack<Character> stack = new Stack<Character>();
+		
 		for (int i = 0; i < revers.length; i++) {
 			if (Character.isDigit(revers[i]))
 				continue;
+			
 			stack.push(revers[i]);
 			revers[i] = DOLLAR;
 		}
